@@ -7,13 +7,15 @@ package lotterygame.java;
 /**
  *
  * @author lenle
- */import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+ */
+import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.HashSet;
+
 
 
 public class LotteryGameJava extends JFrame {
@@ -70,21 +72,21 @@ public class LotteryGameJava extends JFrame {
     private class SubmitListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Set<Integer> winningNumbers = new HashSet<>();
-            while (winningNumbers.size() < 6) {
-                winningNumbers.add((int) (Math.random() * 31));
+            Set<Integer> wN= new HashSet<>();
+            while (wN.size() < 6) {
+                wN.add((int) (Math.random() * 31));
             }
 
-            ArrayList<Integer> userNumbers = new ArrayList<>();
+            ArrayList<Integer> uN = new ArrayList<>();
             for (int i = 0; i <= 30; i++) {
                 if (cB[i].isSelected()) {
-                    userNumbers.add(i);
+                    uN.add(i);
                 }
             }
 
             int matches = 0;
-            for (int num : userNumbers) {
-                if (winningNumbers.contains(num)) {
+            for (int num : uN) {
+                if (wNs.contains(num)) {
                     matches++;
                 }
             }
@@ -97,9 +99,9 @@ public class LotteryGameJava extends JFrame {
                 case 6 -> prize = "1,000,000";
             }
 
-            rL.setText("<html>Wins: $" + prize + " | Matches: " + matches +
-                                "<br>Winning Nos: " + winningNumbers +
-                                "<br>Your Nos: " + userNumbers + "</html>");
+            rL.setText("<html>Wins: $" + prize + "! | Matches: " + matches +
+                                "!<br>Winning Nos: " + wN +
+                                "<br>Your Nos: " + uN + "</html>");
         } 
        
     } public static void main(String[] args) {
